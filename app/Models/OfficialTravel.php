@@ -16,6 +16,7 @@ class OfficialTravel extends Model
         'hometown_id',
         'destination_id',
         'duration',
+        'status',
         'description',
     ];
 

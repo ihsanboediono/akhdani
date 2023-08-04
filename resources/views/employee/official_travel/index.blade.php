@@ -17,9 +17,7 @@
 							<h5 class="text-white op-7 mb-2">Kelola Perjalanan Dinas yang disediakan disini.</h5>
 						</div>
 						<div class="ml-md-auto py-2 py-md-0">
-							@if (auth()->user()->role != 'root')
-								<a href="{{ route('admin.perdin.add') }}" class="btn btn-secondary btn-round"><i class="fa fa-plus-circle mr-2" aria-hidden="true"></i>Tambah Perjalanan</a>
-							@endif
+							<a href="{{ route('admin.perdin.add') }}" class="btn btn-secondary btn-round"><i class="fa fa-plus-circle mr-2" aria-hidden="true"></i>Tambah Perjalanan</a>
 						</div>
 					</div>
 				</div>
@@ -34,7 +32,6 @@
 										<thead>
 											<tr>
 												<th width="5%">No</th>
-												<th width="16%">Nama</th>
 												<th width="16%">Kota</th>
 												<th width="25%">Tanggal</th>
 												<th>Keterangan</th>
@@ -44,7 +41,6 @@
 										<tfoot>
 											<tr>
 												<th>No</th>
-												<th>Nama</th>
 												<th>Kota</th>
 												<th>Tanggal</th>
 												<th>Keterangan</th>
@@ -98,7 +94,7 @@
 			responsive: true,
 			
 			ajax: {
-				url : '{!! route('admin.perdin.data') !!}',
+				url : '{!! route('pegawai.perdin.data') !!}',
 				type : 'POST',
 				data: {_token:_token},
 			},
@@ -108,7 +104,6 @@
 						return meta.row + meta.settings._iDisplayStart + 1;
 					} 
 				},
-				{ data: 'user.name' },
 				{ 
 					data: 'hometown',
 					render: function(data, type, row){
@@ -122,15 +117,21 @@
 					}
 				},
 				{ data: 'description' },
-				{
-					data: 'id',
+				
+				{ 
+					data: 'status',
 					render: function(data, type, row){
-						var url_edit = "{{ \Request::url().'/edit/' }}"+data;
-						return '\
-						<a href="'+url_edit+'" class="btn btn-xs btn-primary my-1">Detail</a>';
+						
+						if (data == "pending") {
+							return '<span class="btn btn-warning" >Pending</span>';
+						} else if (data == "approved") {
+							return '<span class="btn btn-primary" >Approved</span>';
+						} else if (data == "rejected") {
+							return '<span class="btn btn-danger" >Approved</span>';
+						} 
+								
 					}
 				},
-	
 			]
 		});
 	} );

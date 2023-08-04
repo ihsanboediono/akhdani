@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\MasterCityController;
 use App\Http\Controllers\Admin\OfficialTravelController;
+use App\Http\Controllers\Employee\OfficialTravelController as EmployeOfficialTravel;
 
 /*
 |--------------------------------------------------------------------------
@@ -109,16 +110,12 @@ Route::prefix('pegawai')->group(function () {
                 });
             });
 
-            Route::group(['prefix' => 'perdin', 'controller' => OfficialTravelController::class], function () {
+            Route::group(['prefix' => 'perdin', 'controller' => EmployeOfficialTravel::class], function () {
                 Route::name('perdin.')->group(function () {
                     Route::get('', 'index')->name('index');
                     Route::get('/add', 'create')->name('add');
                     Route::post('/add', 'store')->name('store');
                     Route::post('/data', 'data')->name('data');
-                    Route::get('/{officialTravel}', 'show')->name('show');
-                    Route::get('/edit/{officialTravel}', 'edit')->name('edit');
-                    Route::put('/edit/{officialTravel}', 'update')->name('update');
-                    Route::delete('/{officialTravel}', 'destroy')->name('delete');
                 });
             });
             
