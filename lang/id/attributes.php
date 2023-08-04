@@ -1,0 +1,36 @@
+<?php 
+
+return [
+    "name" => "Nama",
+    "name_id" => "Nama",
+    "name_en" => "Nama dalam bahasa inggris",
+    "position_id" => "Posisi",
+    "position_en" => "Posisi dalam bahasa inggris",
+    "description_id" => "Deskripsi",
+    "description_en" => "Deskripsi dalam bahasa inggris",
+    "category" => "Kategori",
+    "image" => "Foto atau gambar ",
+    "status" => "Status",
+    "end_date" => "Tanggal selesai",
+    "start_date" => "Tanggal mulai",
+    "title_id" => "Judul",
+    "title_en" => "Judul dalam bahasa inggris",
+    "subtitle_id" => "Subjudul",
+    "subtitle_en" => "Subjudul dalam bahasa inggris",
+    "icon" => "Ikon",
+    "coordinate" => "koordinat",
+    "type" => "Tipe",
+    "address" => "Alamat",
+    "telephone" => "Telepon",
+    "subcategory" => "Subkategori",
+    'firstname' => 'Nama depan',
+    'lastname' => 'Nama belakang',
+    'subject' => 'Subjek',
+    'message' => 'Pesan',
+    'year' => 'Tahun',
+    'document' => 'Dokumen',
+    'date' => 'Tanggal',
+    'type_news' => 'Jenis berita',
+];
+
+?>
