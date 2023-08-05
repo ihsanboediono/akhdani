@@ -1,6 +1,6 @@
 {{-- call header and footer --}}
 @extends('admin.layouts.main')
-@section('title',  'Layanan')
+@section('title',  'Pengajuan Baru')
 
 @section('content')
 

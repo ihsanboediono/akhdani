@@ -177,10 +177,10 @@ class OfficialTravelController extends Controller
 
     public function data()
     {
-        return DataTables::of(OfficialTravel::whereIn('status', ['pending'])->latest()->with(['hometown', 'destination', 'user'])->get())->make(true);
+        return DataTables::of(OfficialTravel::whereIn('status', ['pending'])->with(['hometown', 'destination', 'user'])->latest())->make(true);
     }
     public function history_data()
     {
-        return DataTables::of(OfficialTravel::whereNotIn('status', ['pending'])->latest()->with(['hometown', 'destination', 'user'])->get())->make(true);
+        return DataTables::of(OfficialTravel::whereNotIn('status', ['pending'])->with(['hometown', 'destination', 'user'])->latest())->make(true);
     }
 }

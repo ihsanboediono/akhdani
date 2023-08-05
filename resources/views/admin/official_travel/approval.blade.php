@@ -1,6 +1,10 @@
 {{-- call header and footer --}}
 @extends('admin.layouts.main')
-@section('title',  'Edit layanan')
+@if (request()->routeIs('admin.perdin.history.*'))
+    @section('title',  'History Perdin Pegawai')
+@else
+    @section('title',  'Approval Perdin Pegawai')
+@endif
 
 @section('content')
 

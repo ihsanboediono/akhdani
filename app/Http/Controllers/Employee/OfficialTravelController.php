@@ -105,6 +105,6 @@ class OfficialTravelController extends Controller
 
     public function data()
     {
-        return DataTables::of(OfficialTravel::where('user_id', auth()->user()->id )->latest()->with(['hometown', 'destination', 'user'])->get())->make(true);
+        return DataTables::of(OfficialTravel::where('user_id', auth()->user()->id )->with(['hometown', 'destination', 'user'])->latest())->make(true);
     }
 }

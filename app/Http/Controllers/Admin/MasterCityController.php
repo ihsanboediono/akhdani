@@ -46,7 +46,6 @@ class MasterCityController extends Controller
      */
     public function create()
     {
-        return round($this->distance(-7.56925, 110.82845, -7.97784, 110.36723, "K"))  . " Kilometers<br>";
         
         $province = file_get_contents('https://api.goapi.id/v1/regional/provinsi?api_key='.ENV('PETA_KEY'));
         $data = json_decode($province) ;
