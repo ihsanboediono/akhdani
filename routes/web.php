@@ -19,7 +19,9 @@ use App\Http\Controllers\Employee\OfficialTravelController as EmployeOfficialTra
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+Route::get('/', function() {
+    return redirect()->to(route('login'));
+});
 
 Route::prefix('admin')->group(function () {
     Route::name('admin.')->group(function () {

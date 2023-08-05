@@ -78,14 +78,6 @@ class FortifyServiceProvider extends ServiceProvider
             return view('admin.auth.login');
         });
 
-        Fortify::registerView(function () {
-            return view('admin.auth.register');
-        });
-
-        Fortify::verifyEmailView(function () {
-            return view('admin.auth.verify');
-        });
-
         Fortify::authenticateUsing(function (Request $request) {
             $user = User::where('email', $request->email)->first();
      
