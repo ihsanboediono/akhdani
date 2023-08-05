@@ -121,7 +121,7 @@
                 //Here we will divide the above time difference by the no of miliseconds in a day
                 var days_difference = time_difference / (1000*3600*24);
                 //alert(days);
-                $('#hari').text(days_difference) ;
+                $('#hari').text(days_difference+1) ;
             };
         });
 

@@ -39,7 +39,6 @@ class OfficialTravelController extends Controller
      */
     public function index()
     {
-        // return OfficialTravel::latest()->with(['hometown', 'destination'])->get();
         return view('admin.official_travel.index');
     }
 
@@ -72,6 +71,7 @@ class OfficialTravelController extends Controller
         $date2 = strtotime($request->tanggal_pulang);
         $diff = $date2 - $date1;
         $days = floor($diff / (60 * 60 * 24));
+        $days = $days+1;
 
 
         $insert = OfficialTravel::create([
@@ -171,7 +171,6 @@ class OfficialTravelController extends Controller
 
     public function history()
     {
-        // return OfficialTravel::latest()->with(['hometown', 'destination'])->get();
         return view('admin.official_travel.history');
     }
 

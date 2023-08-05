@@ -47,27 +47,7 @@
 												</tr>
 											</tfoot>
 											<tbody>
-												{{-- @foreach ($users as $user)
-													
-												<tr>
-													<td>{{ $loop->iteration }}</td>
-													<td>{{ $user->name }}</td>
-													<td>{{ $user->email }}</td>
-													<td>{{ $user->status }}</td>
-													<td>
-														@if ($user->is_active)
-															<button onclick="set_switch({{ $user->id }} , {{ $user->is_active }})" class="btn btn-sm btn-success">Active</button>
-														@else
-															<button onclick="set_switch({{ $user->id }} , {{ $user->is_active }})" class="btn btn-sm btn-dark">Not Active</button>
-														@endif
-														</td>
-													<td>
-														<a href="{{ route('admin.users.edit', ['user' => $user->id]) }}" class="btn btn-warning btn-sm m-1"><i class="fas fa-pencil-alt mr-1"></i> Edit</a>
-														<button type="button" id="delete" class="btn btn-danger btn-sm m-1" data-id="{{ $user->id }}"><i class="fas fa-trash mr-1"></i> Hapus</button>
-													</td>
-												</tr>
 												
-												@endforeach --}}
 											</tbody>
 										</table>
 									</div>

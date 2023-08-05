@@ -22,59 +22,75 @@
                     <div class="col-md-8">
                         <div class="card">
                             <div class="card-header card-info">
-                                <div class="card-title">Form edit layanan</div>
+                                <div class="card-title">Form Edit Kota</div>
                             </div>
                             <div class="card-body">
-                            <form action="{{ route('admin.service.update', ['service' => $service->id]) }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('admin.kota.update', ['masterCity' => $masterCity->id]) }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 @method('put')
-                                <div class="form-group">
-                                    <label for="name_id">Nama layanan</label>
-                                    <input type="text" class="form-control" id="name_id" name="name_id" placeholder="Nama layanan" value="{{ old('name_id', $service->name_id) }}">
-                                    @error('name_id') <span class="text-danger">{{ $message }}</span> @enderror
-                                </div>
-                                {{-- <div class="form-group">
-                                    <label for="name_en">Nama layanan (English)</label>
-                                    <input type="text" class="form-control" id="name_en" name="name_en" placeholder="Nama layanan bahasa inggris" value="{{ old('name_en', $service->name_en) }}">
-                                    @error('name_en') <span class="text-danger">{{ $message }}</span> @enderror
-                                </div> --}}
-                                <div class="form-group">
-                                    <label for="description_id">Deskripsi layanan</label>
-                                    <textarea class="form-control" id="editor1" rows="5" name="description_id" placeholder="">{{ old('description_id', $service->description_id) }}</textarea>
-                                    @error('description_id') <span class="text-danger">{{ $message }}</span> @enderror
-                                </div>
-                                {{-- <div class="form-group">
-                                    <label for="description_en">Deskripsi layanan (English)</label>
-                                    <textarea class="form-control" id="editor2" rows="5" name="description_en" placeholder="">{{ old('description_en', $service->description_en) }}</textarea>
-                                    @error('description_en') <span class="text-danger">{{ $message }}</span> @enderror
-                                </div> --}}
-                                <div class="row form-group">
-                                    <div class="form-group col-md-6">
-                                        <p style="font-weight: 600">Gambar</p>
-                                        <img src="{{ $service->image_url }}" class="img-preview img-fluid mb-3">
-                                        <p id="file-name"></p>
-                                        <label class="image-label" for="image"><i class="fas fa-file-upload"></i><span>Cari File</span></label>
-                                        <input type="file" class="form-control-file" id="image" name="image" onchange="previewImage()">
-                                        <div class="info">
-                                            <p>Max size : 1MB</p>
-                                        </div>
-                                        @error('image') <span class="text-danger">{{ $message }}</span> @enderror
+
+                                <div class="row">
+                                    <div class="form-group col-lg-6">
+                                        <label for="provinsi">Provinsi</label>
+                                        <input type="text" class="form-control" id="provinsi" name="provinsi" placeholder="Provinsi" value="{{ old('provinsi', $masterCity->province) }}">
+                                        @error('provinsi') <span class="text-danger">{{ $message }}</span> @enderror
                                     </div>
-                                    <div class="form-group col-md-6">
-                                        <p style="font-weight: 600">Icon</p>
-                                        <img src="{{ $service->icon_url }}" class="img-fluid mb-3 icon-preview" id="iconx" >
-                                        <p id="icon-name"></p>
-                                        <label class="image-label" for="icon"><i class="fas fa-file-upload"></i><span>Cari File</span></label>
-                                        <input type="file" class="form-control-file icon-image" id="icon" name="icon" onchange="previewIcon()">
-                                        <div class="info">
-                                            <p>Max size : 1MB</p>
-                                        </div>
-                                        @error('icon') <span class="text-danger">{{ $message }}</span> @enderror
+                                    <div class="form-group col-lg-6">
+                                        <label for="nama_kota">Nama Kota</label>
+                                        <input type="text" class="form-control" id="nama_kota" name="nama_kota" placeholder="Nama Kota" value="{{ old('nama_kota', $masterCity->name) }}">
+                                        @error('nama_kota') <span class="text-danger">{{ $message }}</span> @enderror
+                                    </div>
+                                    
+                                    <div class="form-group col-lg-6">
+                                        <label for="pulau">Pulau</label>
+                                        <input type="text" class="form-control" id="pulau" name="pulau" placeholder="Pulau" value="{{ old('pulau', $masterCity->island) }}">
+                                        @error('pulau') <span class="text-danger">{{ $message }}</span> @enderror
+                                    </div>
+                                    <div class="form-group col-lg-6">
+                                        <label for="luar_negeri">Luar Negeri</label>
+                                        <select name="luar_negeri" id="luar_negeri" class="form-control">
+                                            <option value="">- Pilih Opsi -</option>
+                                            <option value="1" @selected(old('luar_negeri', $masterCity->overseas) == '1')>Ya</option>
+                                            <option value="0" @selected(old('luar_negeri', $masterCity->overseas) == '0')>Tidak</option>
+                                        </select>
+                                        @error('luar_negeri') <span class="text-danger">{{ $message }}</span> @enderror
+                                    </div>
+                                    <div class="form-group col-lg-6">
+                                        <label for="latitude">Latitude</label>
+                                        <input type="text" class="form-control" id="latitude" name="latitude" placeholder="Latitude" value="{{ old('latitude', $masterCity->latitude) }}">
+                                        @error('latitude') <span class="text-danger">{{ $message }}</span> @enderror
+                                    </div>
+                                    <div class="form-group col-lg-6">
+                                        <label for="longitude">Longitude</label>
+                                        <input type="text" class="form-control" id="longitude" name="longitude" placeholder="Longitude" value="{{ old('longitude', $masterCity->longitude) }}">
+                                        @error('longitude') <span class="text-danger">{{ $message }}</span> @enderror
                                     </div>
                                 </div>
-                                <button class="btn btn-primary btn-rounded">Edit layanan </button>
-                                <a href="{{ route('admin.service.index') }}" class="btn btn-warning btn-rounded ml-2">Kembali</a>
+
+                                <button class="btn btn-primary btn-rounded">Edit Data Kota </button>
+                                <a href="{{ route('admin.kota.index') }}" class="btn btn-warning btn-rounded ml-2">Kembali</a>
                             </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-header card-info">
+                                <div class="card-title">Bantuan Mendapatkan Latitude dan Langitude</div>
+                            </div>
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="cari_tempat">Cari Tempat</label>
+                                    @error('cari_tempat') <span class="text-danger">{{ $message }}</span> @enderror
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" id="cari_tempat" name="cari_tempat" placeholder="Cari Tempat" value="{{ old('cari_tempat') }}" aria-describedby="button-addon2">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-outline-primary cari" type="button" id="button-addon2">Cari</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-list">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -94,44 +110,37 @@
 @endsection
 
 @section('js')
-    <script>
-            // thumbnail
-        function previewImage() {
-            const image = document.querySelector('#image');
-            const imagePreview = document.querySelector('.img-preview');
-            let filename = document.getElementById('file-name');
-            imagePreview.style.display='block';
+<script>
+    $(".cari").on('click', function(e) {
+        // console.log($(this).val());
+        var id = $('#cari_tempat').val();
+        var latlang = $('.card-list');
+        fetch('{{ route('admin.kota.index') }}/search/'+id)
+            .then(response => response.json())
+            .then(data => {
+                // console.log(data);
+                var lat = data.data.results;
+                latlang.empty();
+                $.each( lat, function( key, value ) {
+                    $('.card-list')
+                    .append('<div class="item-list">\
+                        <div class="info-user ml-3 mr-3">\
+                            <div >'+value.displayName+'</div>\
+                            <div >'+value.coordinate+'</div>\
+                        </div>\
+                        <button class="btn btn-icon btn-primary btn-round btn-xs"  onclick="langlat(\''+value.lat+'\',\''+value.lng+'\')">\
+                            <i class="fa fa-plus"></i>\
+                        </button>\
+                        <hr>\
+                    </div>');
+                });
+            })
+        
+    })
 
-            const oFReader = new FileReader();
-            oFReader.readAsDataURL(image.files[0]);
-            filename.innerHTML = image.files[0].name;
-
-            oFReader.onload =function (oFREvent) {
-                imagePreview.src = oFREvent.target.result;					
-            }
-        }
-        function previewIcon() {
-            const icon = document.querySelector('#icon');
-            const iconPreview = document.querySelector('.icon-preview');
-            let filename = document.getElementById('icon-name');
-            iconPreview.style.display='block';
-
-            const oFReader = new FileReader();
-            oFReader.readAsDataURL(icon.files[0]);
-            filename.innerHTML = icon.files[0].name;
-
-            oFReader.onload =function (oFREvent) {
-                iconPreview.src = oFREvent.target.result;					
-            }
-        }
-
-        var editor = CKEDITOR.replace("editor1", {
-                height: 200,
-            });
-            CKFinder.setupCKEditor(editor);
-            var editor2 = CKEDITOR.replace("editor2", {
-                height: 200,
-            });
-            CKFinder.setupCKEditor(editor2);
-    </script>
+    function langlat(lat,lang) {
+        $("#latitude").val(lat)
+        $("#longitude").val(lang)
+    }
+</script>
 @endsection

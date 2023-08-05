@@ -78,8 +78,13 @@
 								<div class="card-body">
                                     <div class="form-group">
                                         <label for="cari_tempat">Cari Tempat</label>
-                                        <input type="text" class="form-control" id="cari_tempat" name="cari_tempat" placeholder="Cari Tempat" value="{{ old('cari_tempat') }}">
                                         @error('cari_tempat') <span class="text-danger">{{ $message }}</span> @enderror
+                                        <div class="input-group mb-3">
+                                            <input type="text" class="form-control" id="cari_tempat" name="cari_tempat" placeholder="Cari Tempat" value="{{ old('cari_tempat') }}" aria-describedby="button-addon2">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-outline-primary cari" type="button" id="button-addon2">Cari</button>
+                                            </div>
+                                        </div>
                                     </div>
 									<div class="card-list">
 									</div>
@@ -105,9 +110,9 @@
     <script>
 
 
-        $("#cari_tempat").on('change', function(e) {
+        $(".cari").on('click', function(e) {
             // console.log($(this).val());
-            var id = $(this).val();
+            var id = $('#cari_tempat').val();
             var latlang = $('.card-list');
             fetch('{{ route('admin.kota.index') }}/search/'+id)
                 .then(response => response.json())

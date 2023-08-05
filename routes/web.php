@@ -89,12 +89,12 @@ Route::prefix('admin')->group(function () {
                     Route::post('/data', 'data')->name('data');
                     Route::get('/edit/{masterCity}', 'edit')->name('edit');
                     Route::put('/edit/{masterCity}', 'update')->name('update');
-                    Route::delete('/{masterCity}', 'destroy')->name('delete');
-
-
+                    
+                    
                     Route::get('/provinsi', 'provinsi')->name('provinsi');
                     Route::get('/kota/{id}', 'kota')->name('kota');
                     Route::get('/search/{masterCity}', 'show')->name('show');
+                    Route::delete('/{masterCity}', 'destroy')->name('delete');
                 });
             });
         

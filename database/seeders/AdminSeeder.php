@@ -44,7 +44,7 @@ class AdminSeeder extends Seeder
                 'updated_at'=>Carbon::now()->format('Y-m-d H:i:s'),
             ],
             [
-                'name'=>'Pak Pegawai',
+                'name'=>'Pegawai',
                 'username'=>'pegawai',
                 'email'=>'pegawai@gmail.com',
                 'email_verified_at'=>Carbon::now()->format('Y-m-d H:i:s'),

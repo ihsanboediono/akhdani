@@ -85,29 +85,5 @@
 
 @section('js')
     <script>
-        // thumbnail
-        function previewImage() {
-            const image = document.querySelector('#image');
-            const imagePreview = document.querySelector('.img-preview');
-            let filename = document.getElementById('file-name');
-            imagePreview.style.display='block';
-
-            const oFReader = new FileReader();
-            oFReader.readAsDataURL(image.files[0]);
-            filename.innerHTML = image.files[0].name;
-
-            oFReader.onload =function (oFREvent) {
-                imagePreview.src = oFREvent.target.result;					
-            }
-        }
-
-        var editor = CKEDITOR.replace("editor1", {
-            height: 200,
-        });
-        CKFinder.setupCKEditor(editor);
-        var editor2 = CKEDITOR.replace("editor2", {
-            height: 200,
-        });
-        CKFinder.setupCKEditor(editor2);
     </script>
 @endsection

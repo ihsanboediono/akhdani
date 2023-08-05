@@ -54,16 +54,7 @@
 											</tr>
 										</tfoot>
 										<tbody>
-											{{-- <tr>
-												<td>1</td>
-												<td><img class="img-product" src="{{ asset('assets/img/examples/product8.jpg') }}" alt=""></td>
-												<td>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</td>
-												<td>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Pariatur amet voluptas excepturi veniam corporis deserunt quos nostrum non rem esse, dolore laudantium assumenda nisi cupiditate! Dolorem velit commodi fugiat quae.</td>
-												<td>
-													<a href="{{ route('edit-services') }}" class="btn btn-warning btn-sm m-1"><i class="fas fa-pencil-alt mr-1"></i> Edit</a>
-													<button type="button" id="delete1" class="btn btn-danger btn-sm m-1"><i class="fas fa-trash mr-1"></i> Hapus</button>
-												</td>
-											</tr> --}}
+											
 											
 										</tbody>
 									</table>

@@ -126,11 +126,6 @@
         });
 
 
-
-        
-
-        
-
         function langlat(lat,lang) {
             $("#latitude").val(lat)
             $("#longitude").val(lang)

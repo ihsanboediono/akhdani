@@ -89,7 +89,6 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        // return $user;
         return view('admin.users.edit', ['user' => $user]);
     }
 
@@ -146,7 +145,6 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        // return $user;
         if ($user->role != 'root') {
             $user->delete();
             $response = array(

@@ -46,11 +46,9 @@ class MasterCityController extends Controller
      */
     public function create()
     {
-        
-        $province = file_get_contents('https://api.goapi.id/v1/regional/provinsi?api_key='.ENV('PETA_KEY'));
-        $data = json_decode($province) ;
-        // return $data->data;
-        return view('admin.master_city.add', ['provincies' => $data->data]);
+        // $province = file_get_contents('https://api.goapi.id/v1/regional/provinsi?api_key='.ENV('PETA_KEY'));
+        // $data = json_decode($province) ;
+        return view('admin.master_city.add',);
     }
 
     /**
@@ -126,11 +124,11 @@ class MasterCityController extends Controller
         ];
 
         if ($masterCity->update($data)) {
-            Alert::toast('Berhasil mengubah data.', 'success');
+            Alert::alert('Success', 'Berhasil mengubah data.', 'success');
         }else{
-            Alert::toast('Gagal mengubah data.', 'error');
+            Alert::alert('Error', 'Gagal mengubah data.', 'error');
         }
-        return redirect()->to(route('admin.career.index'));
+        return redirect()->to(route('admin.kota.index'));
     }
 
     /**
@@ -180,7 +178,7 @@ class MasterCityController extends Controller
 
         $new = strtolower($newName);
         $new = str_replace('kep.', 'kepulauan', $new);
-        // return $new;
+        
         $get = file_get_contents('https://api.goapi.id/v1/places?search='.$new.'&api_key='.ENV('PETA_KEY'));
 
         return $get;
