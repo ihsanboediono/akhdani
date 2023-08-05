@@ -13,13 +13,13 @@
 				<div class="page-inner py-5">
 					<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
 						<div>
-							<h2 class="text-white pb-2 fw-bold">Perjalanan Dinas </h2>
-							<h5 class="text-white op-7 mb-2">Kelola Perjalanan Dinas yang disediakan disini.</h5>
+							<h2 class="text-white pb-2 fw-bold">Pengajuan Baru </h2>
+							<h5 class="text-white op-7 mb-2">Kelola Pengajuan Perjalanan Dinas yang disediakan disini.</h5>
 						</div>
 						<div class="ml-md-auto py-2 py-md-0">
-							@if (auth()->user()->role != 'root')
+							{{-- @if (auth()->user()->role != 'root')
 								<a href="{{ route('admin.perdin.add') }}" class="btn btn-secondary btn-round"><i class="fa fa-plus-circle mr-2" aria-hidden="true"></i>Tambah Perjalanan</a>
-							@endif
+							@endif --}}
 						</div>
 					</div>
 				</div>
@@ -76,7 +76,7 @@
 			<div class="container-fluid">
 				
 				<div class="copyright ml-auto">
-					{{ date("Y") }}, made with <i class="fa fa-heart heart text-danger"></i> by <a href="https://www.tupaitech.net">Tupai Tech</a>
+					{{ date("Y") }}, made with <i class="fa fa-heart heart text-danger"></i> by <a href="https://www.linkedin.com/in/ihsan-boediono/">Ihsan Budiono</a>
 				</div>				
 			</div>
 		</footer>
@@ -125,7 +125,7 @@
 				{
 					data: 'id',
 					render: function(data, type, row){
-						var url_edit = "{{ \Request::url().'/edit/' }}"+data;
+						var url_edit = "{{ \Request::url().'/approval/' }}"+data;
 						return '\
 						<a href="'+url_edit+'" class="btn btn-xs btn-primary my-1">Detail</a>';
 					}

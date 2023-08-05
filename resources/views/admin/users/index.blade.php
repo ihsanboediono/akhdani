@@ -81,7 +81,7 @@
 				<div class="container-fluid">
 					
 					<div class="copyright ml-auto">
-						{{ date("Y") }}, made with <i class="fa fa-heart heart text-danger"></i> by <a href="https://www.tupaitech.net">Tupai Tech</a>
+						{{ date("Y") }}, made with <i class="fa fa-heart heart text-danger"></i> by <a href="https://www.linkedin.com/in/ihsan-boediono/">Ihsan Budiono</a>
 					</div>				
 				</div>
 			</footer>
@@ -117,7 +117,7 @@
 						data: 'name',
 						render: function(data, type, row){
 							return '<div class="text-capitalize">'+data+'</div>\
-							<div class="text-capitalize">Username: '+row.username+'</div>';
+							<div >Username: '+row.username+'</div>';
 						}
 					},
 					{ data: 'email' },

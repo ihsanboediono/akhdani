@@ -13,11 +13,13 @@
 				<div class="page-inner py-5">
 					<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
 						<div>
-							<h2 class="text-white pb-2 fw-bold">Master Kota </h2>
-							<h5 class="text-white op-7 mb-2">Kelola Master Kota yang disediakan disini.</h5>
+							<h2 class="text-white pb-2 fw-bold">History Pengajuan Perjalanan Dinas </h2>
+							<h5 class="text-white op-7 mb-2">Kelola History Pengajuan Perjalanan Dinas yang disediakan disini.</h5>
 						</div>
 						<div class="ml-md-auto py-2 py-md-0">
-							<a href="{{ route('admin.kota.add') }}" class="btn btn-secondary btn-round"><i class="fa fa-plus-circle mr-2" aria-hidden="true"></i>Tambah Kota</a>
+							@if (auth()->user()->role != 'root')
+								<a href="{{ route('admin.perdin.add') }}" class="btn btn-secondary btn-round"><i class="fa fa-plus-circle mr-2" aria-hidden="true"></i>Tambah Perjalanan</a>
+							@endif
 						</div>
 					</div>
 				</div>
@@ -32,24 +34,22 @@
 										<thead>
 											<tr>
 												<th width="5%">No</th>
-												<th>Nama Kota</th>
-												<th>Provinsi</th>
-												<th>Pulau</th>
-												<th>Luar Negeri</th>
-												<th>Latitude</th>
-												<th>Longitude</th>
-												<th>Aksi</th>
+												<th width="16%">Nama</th>
+												<th width="16%">Kota</th>
+												<th width="25%">Tanggal</th>
+												<th>Keterangan</th>
+												<th width="10%">status</th>
+												<th width="10%">Aksi</th>
 											</tr>
 										</thead>
 										<tfoot>
 											<tr>
 												<th>No</th>
-												<th>Nama Kota</th>
-												<th>Provinsi</th>
-												<th>Pulau</th>
-												<th>Luar Negeri</th>
-												<th>Latitude</th>
-												<th>Longitude</th>
+												<th>Nama</th>
+												<th>Kota</th>
+												<th>Tanggal</th>
+												<th>Keterangan</th>
+												<th>Status</th>
 												<th>Aksi</th>
 											</tr>
 										</tfoot>
@@ -86,6 +86,7 @@
 
 @endsection
 
+
 @section('js')
 <script>
 	var table;
@@ -99,7 +100,7 @@
 			responsive: true,
 			
 			ajax: {
-				url : '{!! route('admin.kota.data') !!}',
+				url : '{!! route('admin.perdin.history.data') !!}',
 				type : 'POST',
 				data: {_token:_token},
 			},
@@ -108,31 +109,44 @@
 					render: function (data, type, row, meta) {
 						return meta.row + meta.settings._iDisplayStart + 1;
 					} 
-				  },
-				{ data: 'name' },
-				{ data: 'province' },
-				{ data: 'island' },
+				},
+				{ data: 'user.name' },
 				{ 
-					data: 'overseas',
+					data: 'hometown',
 					render: function(data, type, row){
-						if (data) {
-							return 'Ya';
-						}else{
-							return 'Tidak';
-						}
+						return data.name+'    <i class="fas fa-long-arrow-alt-right"></i>     '+ row.destination.name;
 					}
 				},
-				{ data: 'latitude' },
-				{ data: 'longitude' },
+				{ 
+					data: 'tanggal',
+					render: function(data, type, row){ 
+						return data.departure+'    <i class="fas fa-long-arrow-alt-right"></i>    '+ data.return +' ('+row.duration+' Hari)';
+					}
+				},
+				{ data: 'description' },
+				{ 
+					data: 'status',
+					render: function(data, type, row){
+						
+						if (data == "pending") {
+							return '<span class="btn btn-warning" >Pending</span>';
+						} else if (data == "approved") {
+							return '<span class="btn btn-success" >Approved</span>';
+						} else if (data == "rejected") {
+							return '<span class="btn btn-danger" >Rejected</span>';
+						} 
+								
+					}
+				},
 				{
 					data: 'id',
 					render: function(data, type, row){
-						var url_edit = "{{ \Request::url().'/edit/' }}"+data;
+						var url_edit = "{{ \Request::url().'/' }}"+data;
 						return '\
-						<a href="'+url_edit+'" class="btn btn-xs btn-warning my-1">Edit</a>\
-						<button class="btn btn-xs btn-danger my-1" onclick="delete_data('+data+')">Hapus</button>';
+						<a href="'+url_edit+'" class="btn btn-xs btn-primary my-1">Detail</a>';
 					}
 				},
+	
 			]
 		});
 	} );

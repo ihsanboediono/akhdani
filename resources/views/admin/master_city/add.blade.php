@@ -93,7 +93,7 @@
 				<div class="container-fluid">
 					
 					<div class="copyright ml-auto">
-						{{ date("Y") }}, made with <i class="fa fa-heart heart text-danger"></i> by <a href="https://www.tupaitech.net">Tupai Tech</a>
+						{{ date("Y") }}, made with <i class="fa fa-heart heart text-danger"></i> by <a href="https://www.linkedin.com/in/ihsan-boediono/">Ihsan Budiono</a>
 					</div>				
 				</div>
 			</footer>

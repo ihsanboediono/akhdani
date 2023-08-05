@@ -67,10 +67,14 @@ Route::prefix('admin')->group(function () {
                     Route::get('/add', 'create')->name('add');
                     Route::post('/add', 'store')->name('store');
                     Route::post('/data', 'data')->name('data');
-                    Route::get('/{officialTravel}', 'show')->name('show');
-                    Route::get('/edit/{officialTravel}', 'edit')->name('edit');
-                    Route::put('/edit/{officialTravel}', 'update')->name('update');
-                    Route::delete('/{officialTravel}', 'destroy')->name('delete');
+                    Route::get('/approval/{officialTravel}', 'show')->name('show');
+                    Route::post('/approval/{officialTravel}/approve', 'approve')->name('approve');
+                    Route::post('/approval/{officialTravel}/reject', 'reject')->name('reject');
+                    
+                    
+                    Route::get('/history', 'history')->name('history.index');
+                    Route::post('/history/data', 'history_data')->name('history.data');
+                    Route::get('/history/{officialTravel}', 'show')->name('history.detail');
                 });
             });
 

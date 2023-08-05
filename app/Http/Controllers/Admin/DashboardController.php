@@ -16,45 +16,6 @@ class DashboardController extends Controller
 {
     public function index()
     {
-
-
-        // $product = Product::all();
-        // $partner = Client::all();
-        // $project = Project::all();
-        // $news = News::all();
-
-        // $graph_product = [];
-        // $graph_partner = [];
-        // $graph_project = [];
-        // $graph_news = [];
-        
-        // for ($i=1; $i <= 12; $i++) { 
-        //     array_push($graph_product, Product::ByMonth($i)->ThisYear()->count() ?? 0) ;
-        // }
-        // for ($i=1; $i <= 12; $i++) { 
-        //     array_push($graph_partner, Client::ByMonth($i)->ThisYear()->count());
-        // }
-        // for ($i=1; $i <= 12; $i++) { 
-        //     array_push($graph_project, Project::ByMonth($i)->ThisYear()->count());
-        // }
-        // for ($i=1; $i <= 12; $i++) { 
-        //     array_push($graph_news, News::ByMonth($i)->ThisYear()->count());
-        // }
-        
-
-
-
-        // $data = [
-        //     'product' => $product->count(),
-        //     'partner' => $partner->count(),
-        //     'project' => $project->count(),
-        //     'news' => $news->count(),
-        //     'graph_product' => $graph_product,
-        //     'graph_partner' => $graph_partner,
-        //     'graph_project' => $graph_project,
-        //     'graph_news' => $graph_news,
-        // ];
-        // return $data;
         return view('admin.index');
     }
 }
