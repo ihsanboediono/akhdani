@@ -109,11 +109,17 @@ class OfficialTravelController extends Controller
             if (strtolower($officialTravel->hometown->province) == strtolower($officialTravel->destination->province) && strtolower($officialTravel->hometown->island) == strtolower($officialTravel->destination->island)) {
                 $uang = 200000;
                 $ukur = 'jarak > 60km';
-            }elseif (strtolower($officialTravel->hometown->province) != strtolower($officialTravel->destination->province) && strtolower($officialTravel->hometown->island) == strtolower($officialTravel->destination->island)) {
+            }
+            if (strtolower($officialTravel->hometown->province) != strtolower($officialTravel->destination->province) && strtolower($officialTravel->hometown->island) == strtolower($officialTravel->destination->island)) {
                 $uang = 250000;
                 $ukur = 'jarak > 60km';
-            }elseif (strtolower($officialTravel->hometown->province) != strtolower($officialTravel->destination->province) && strtolower($officialTravel->hometown->island) != strtolower($officialTravel->destination->island)) {
+            }
+            if (strtolower($officialTravel->hometown->province) != strtolower($officialTravel->destination->province) && strtolower($officialTravel->hometown->island) != strtolower($officialTravel->destination->island )) {
                 $uang = 300000;
+                $ukur = 'jarak > 60km';
+            }
+            if (  $officialTravel->destination->overseas == true || $officialTravel->hometown->overseas == true) {
+                $uang = 750000;
                 $ukur = 'jarak > 60km';
             }
         }else{

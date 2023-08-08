@@ -17,7 +17,7 @@
 							<h5 class="text-white op-7 mb-2">Kelola Perjalanan Dinas yang disediakan disini.</h5>
 						</div>
 						<div class="ml-md-auto py-2 py-md-0">
-							<a href="{{ route('admin.perdin.add') }}" class="btn btn-secondary btn-round"><i class="fa fa-plus-circle mr-2" aria-hidden="true"></i>Tambah Perjalanan</a>
+							<a href="{{ route('pegawai.perdin.add') }}" class="btn btn-secondary btn-round"><i class="fa fa-plus-circle mr-2" aria-hidden="true"></i>Tambah Perjalanan</a>
 						</div>
 					</div>
 				</div>
